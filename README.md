@@ -1,12 +1,18 @@
 # Tidal Cheat Sheet
 
+## Contains
+
+The cheat sheet as a pdf and the tex file for generating the cheat sheet.
+
+It also containts a small python script for collecting a list of samples within any folder. I used this to collect the name of all superdirt samples.
+
 ## Purpose
 
 The goal of this cheatsheet is to:
 
-1. Provide a quick reference for Tidalists when they need a refresher.
+1. _Provide a quick reference for Tidalists when they need a refresher._
 
-1. Allow Tidalists to not get too stolid in their playing. It's easy to keep repeating the old patterns. Glancing at the cheatsheet reveals a lot of options, many which are probably outside one's usual fallback options.
+1. _Allow Tidalists to not get too stagnant in their playing._ It's easy to keep repeating the old patterns. Glancing at the cheatsheet reveals a lot of options, many which are probably outside one's usual fallback options.
 
 ## Acknowledgements
 

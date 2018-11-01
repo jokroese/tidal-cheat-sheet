@@ -7,7 +7,6 @@
 \usepackage{color,graphicx,overpic}
 \usepackage{hyperref}
 \usepackage[T1]{fontenc}
-\usepackage{supertabular}
 
 \pdfinfo{
 	/Title (tidal-cheat-sheet.pdf)
@@ -60,21 +59,18 @@
 \newtheorem{example}[section]{Example}
 % -----------------------------------------------------------------------
 
-\newcommand{\begintabler}{\begin{supertabular}{p{0.3\columnwidth}p{0.6\columnwidth}}}
-\newcommand{\finishtabler}{\end{supertabular}}
-	
+\newcommand{\begintabler}{\begin{tabular}{p{0.2\columnwidth}p{0.7\columnwidth}}}	\newcommand{\finishtabler}{\end{tabular}}
 
 \begin{document}
 	\raggedright
 	\footnotesize
 	\begin{multicols}{3}
 		\begin{center}
-			\Large{\underline{Tidal}} \\
+			\Large{Tidal} \\
 		\end{center}
 
-\begintabler
-			\section{Basics} & \\
-			
+			\section{Basics}
+	\begintabler		
 			make sound
 			& d1 sound "bd" \\
 			& or ~~~~~ s "bd"\\
@@ -132,7 +128,7 @@
 						jux (and juxBy) &jux (rev) ~ applies function to RH only.  juxBy 0.5 brings 0.5 closer to centre\\
 						linger &linger 0.25 repeats first $1/4$ cycle\\
 						Beat rotation &0.25 <\~ ~ shifts pattern $1/4$ cycle\\
-						palindrome &= every 2 (rev)\\
+						palindrome &= every 2 (rev) \\
 						rev &rev\\
 						scramble &scramble 2 "bd sn hh" sampling with replacement\\
 						shuffle &shuffle 2 "bd sn hh" sampling without replacement\\
@@ -258,7 +254,7 @@
 		 \finishtabler
 		\section{Super Dirt}
 		 \begintabler
-			load own samples & \~dirt.loadSoundFiles("/path/to/your/own/samples/*");\\
+			load own samples & $\sim$ dirt.loadSoundFiles("/path/to/your/own/samples/*");\\
 			change speaker output &
 		 \finishtabler
 		\section{Dirt Samples}
