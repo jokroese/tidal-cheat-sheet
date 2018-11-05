@@ -59,15 +59,15 @@
 \newtheorem{example}[section]{Example}
 % -----------------------------------------------------------------------
 
-\newcommand{\begintabler}{\begin{tabular}{p{0.2\columnwidth}p{0.7\columnwidth}}}	\newcommand{\finishtabler}{\end{tabular}}
+\newcommand{\begintabler}{\begin{tabular}{p{0.25\columnwidth}p{0.7\columnwidth}}}	\newcommand{\finishtabler}{\end{tabular}}
 
 \begin{document}
 	\raggedright
 	\footnotesize
 	\begin{multicols}{3}
-		\begin{center}
-			\Large{Tidal} \\
-		\end{center}
+%		\begin{center}
+%			\Large{Tidal} \\
+%		\end{center}
 
 			\section{Basics}
 	\begintabler		
@@ -83,7 +83,7 @@
 			compile: one line
 			& shift + enter\\
 			
-			compile: multiple lines
+			compile: multi-line
 			& ctrl + enter\\
 			
 			patterns
@@ -105,41 +105,49 @@
 			* / on groups
 			& [bd sd]*2 cp \\
 			& if you don't get through a whole subpattern in a cycle, it will start where it left off with the next one.\\
-			& Imagine each group is a little loop that plays while it is its turn and then moves onto the next bit\\
+			& Imagine each group is a little tape loop that plays while it is its turn\\
+			
+			polyrhythms
+			& \{bd hh cp\}\%4\\
 			
 			Bjorkland
-			& bd(5,8) \\
+			& bd(5,8) or bd(5,8,1)\\
+			& bd([5,3]/2,8) \\
+			& e 5 8 \\
 			
 			Tempo
 			&  cps 1  cps (140/60/4)
 \finishtabler
 			
 			\section{Functions}
-			\subsection{Transformers}
+			\subsection{Pattern Transformers}
 			Unless otherwise stated, between \$ ... \$
-			\subsubsection{Pattern}
+			
+			\subsubsection{Deterministic}
 			\begintabler
 			brak &squash every other cycle to fit $1/2$ a cycle, and offset it by a $1/4$ of a cycle\\
-			degrade &removes events from a pattern 50\%\\
-			degradeBy &degradeBy 0.9\\
-						fast &fast 2\\
+						fast, slow &fast 2\\
 						fit &\\
 						iter &\\
 						jux (and juxBy) &jux (rev) ~ applies function to RH only.  juxBy 0.5 brings 0.5 closer to centre\\
 						linger &linger 0.25 repeats first $1/4$ cycle\\
-						Beat rotation &0.25 <\~ ~ shifts pattern $1/4$ cycle\\
-						palindrome &= every 2 (rev) \\
+						Beat rotation &0.25 <$\sim$ ~ shifts pattern $1/4$ cycle\\
+%						palindrome &= every 2 (rev) \\
 						rev &rev\\
-						scramble &scramble 2 "bd sn hh" sampling with replacement\\
-						shuffle &shuffle 2 "bd sn hh" sampling without replacement\\
-						slow &slow 2\\
 						smash &\\
 						spread &\\
 						toScale &\\
-						trunc &trunc 0.75 ~ plays first $3/4$ of cycle\\
-						zoom &zoom (0.25, 0.75) ~ plays the section from 0.25 to 0.75 of cycle over time period of original pattern\\
+						trunc & trunc 0.75 ~ plays first $3/4$ of cycle\\
+						zoom & zoom (0.25, 0.75) ~ plays the section from 0.25 to 0.75 of cycle over time period of original pattern\\
 			\finishtabler
-		\subsubsection{Sample}
+			\subsubsection{Stochastic}
+			\begintabler
+%			degrade &removes events from a pattern 50\%\\
+			degradeBy & degradeBy 0.9 removes events from pattern 90\%\\
+			scramble &scramble 2 sampling with replacement\\
+			shuffle & shuffle 2 sampling without replacement\\
+			\finishtabler
+		\subsection{Sample}
 		 \begintabler
 			loopAt & loopAt 4 makes sample fit the given number of cycles\\
 			gap &\\
@@ -165,7 +173,7 @@
 			sometimesBy& sometimesBy 0.25 (fast 2)\\
 			swingBy&\\
 			when&\\
-			whenmod&\\
+			whenmod& when remainder $\geq$\\
 			within&\\
 		 \finishtabler
 		\subsection{Compositions}
@@ -189,9 +197,9 @@
 		 \finishtabler
 		\subsection{Transitions}
 		 \begintabler
-			anticipateIn & t1 (anticipateIn 4) \$ sound "jvbass(5,8)"\i \\
-			anticipate & = (anticipateIn 8)\\
-			clutch &\\
+			anticipateIn & t1 (anticipateIn 4) \$ sound "jvbass(5,8)" \\
+%			anticipate & = (anticipateIn 8)\\
+			clutchIn & \\
 			histpan & \\
 			jump & \\
 			jumpIn & \\
@@ -206,41 +214,80 @@
 		\subsection{Operators}
 		\# equiv. |=|
 		\subsection{Synth Parameters (or effects)}
+		given by \#
+		\subsubsection{Sound}
 		 \begintabler
-			given by \#]
-			hcutoff & \\
-			bandf & \\
-			bandq & \\
+			sustain & \\
+			speed & \\
+			endSpeed & \\
 			begin & \\
+			end & \\
+			loop & \\
+			pan
+		\finishtabler
+		\subsubsection{Envelope}
+		\begintabler
+		attack & \\
+		hold & \\
+		release
+		\finishtabler
+		\subsubsection{hpf}
+		\begintabler
+			hcutoff & \\
+			hresonance
+		\finishtabler
+		\subsubsection{lpf}
+		\begintabler
+		cutoff & \\
+		resonance
+		\finishtabler
+		\subsubsection{bpf}
+		\begintabler
+		bandf & \\
+		bandq
+		\finishtabler
+		\subsubsection{delay}
+		\begintabler
+		delay & \\
+		delayfeedback & \\
+		delaytime
+		\finishtabler
+		\subsubsection{reverb}
+		\begintabler
+		room & //
+		size
+		\finishtabler
+		\subsubsection{tremolo}
+		\begintabler
+		tremolorate & //
+		tremolodepth
+		\finishtabler
+		\subsubsection{phaser}
+		\begintabler
+		phaserrate & //
+		phaserdepth
+		\finishtabler
+		\subsubsection{The Rest}
+		\begintabler
 			coarse & \\
 			crush & \\
 			cut & \\
-			cutoff & \\
-			delay & \\
-			delayfeedback & \\
-			delaytime & \\
-			end & \\
-			gain & \\
 			accelerate & \\
-			hresonance & \\
 			legato & \\
 			loop & \\
-			nudge & \\
-			pan & \\
-			resonance & \\
-			room and size & \\
+			nudge & (Should this be here? Or is this pattern) \\
 			shape & \\
 			sound & \\
-			speed & \\
-			sustain & \\
 			unit & \\
 			vowel & \\
 		 \finishtabler
-		\subsubsection{Combining}
+		 \subsection{Continuous Patterns}
+		 between 0,1. sine,saw,tri,square\\
+		 slow 2 \$ scale 0 2 \$ sine
 		\subsection{Operators}
 		\subsection{Utility}
 		 \begintabler
-			choose & \\
+			choose & choose[2...8] or choose[2,3..8] \\
 			irand &  irand n generates a pattern random integers 0 to n-1  "amencutup*8" \# n (irand 8) \\
 			pequal & \\
 			rand & \\
@@ -254,7 +301,7 @@
 		 \finishtabler
 		\section{Super Dirt}
 		 \begintabler
-			load own samples & $\sim$ dirt.loadSoundFiles("/path/to/your/own/samples/*");\\
+			load own samples & $\sim$ dirt.loadSoundFiles("/path/to/samples/*");\\
 			change speaker output &
 		 \finishtabler
 		\section{Dirt Samples}
